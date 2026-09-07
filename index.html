@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>محادثتي — مساعدك الذكي</title>
+<meta name="description" content="محادثتي: دردشة ذكية عربية مدعومة بالذكاء الاصطناعي.">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#f6f7fb;color:#17181c}
+.app{height:100vh;display:flex;overflow:hidden}.side{width:280px;background:#fff;border-left:1px solid #e8e8ee;padding:16px;display:flex;flex-direction:column;gap:12px}.brand{font-size:22px;font-weight:800}.new{border:0;border-radius:14px;padding:13px;background:#111;color:#fff;font-size:15px}.side button{cursor:pointer}.stats{margin-top:auto;color:#777;font-size:13px}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}.top{height:62px;background:#fff;border-bottom:1px solid #e8e8ee;display:flex;align-items:center;justify-content:space-between;padding:0 18px}.top h1{font-size:17px;margin:0}.menu{display:none;border:0;background:transparent;font-size:24px}
+.chat{flex:1;overflow:auto;padding:28px 16px}.welcome{max-width:760px;margin:12vh auto 0;text-align:center}.welcome h2{font-size:32px;margin:0 0 8px}.welcome p{color:#777}.quick{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px}.quick button{padding:10px 13px;border:1px solid #ddd;border-radius:12px;background:#fff;cursor:pointer}
+.msg{max-width:800px;margin:0 auto 14px;display:flex}.bubble{padding:13px 15px;border-radius:17px;white-space:pre-wrap;line-height:1.7;max-width:85%}.user{justify-content:flex-start}.user .bubble{background:#111;color:#fff;border-bottom-right-radius:5px}.assistant{justify-content:flex-end}.assistant .bubble{background:#fff;border:1px solid #e8e8ee;border-bottom-left-radius:5px}
+.composer{padding:12px 16px;background:#fff;border-top:1px solid #e8e8ee}.form{max-width:800px;margin:auto;display:flex;gap:8px;align-items:end}.input{flex:1;min-height:48px;max-height:150px;resize:none;border:1px solid #ddd;border-radius:15px;padding:13px;font:inherit;outline:none}.send{width:50px;height:48px;border:0;border-radius:14px;background:#111;color:#fff;font-size:19px;cursor:pointer}.send:disabled{opacity:.5}.typing{color:#777;font-size:13px;margin:0 auto 10px;max-width:800px}
+@media(max-width:700px){.side{position:fixed;z-index:5;top:0;bottom:0;right:-300px;transition:.2s;box-shadow:-8px 0 30px #0002}.side.open{right:0}.menu{display:block}.welcome h2{font-size:26px}.chat{padding:18px 10px}.bubble{max-width:92%}}
+.dark body{background:#111}.dark .side,.dark .top,.dark .composer,.dark .assistant .bubble,.dark .quick button{background:#18191d;color:#eee}.dark .top,.dark .composer,.dark .side{border-color:#2a2b31}.dark .input{background:#111;color:#eee;border-color:#333}.dark .assistant .bubble{border-color:#333}.dark .welcome p,.dark .typing,.dark .stats{color:#aaa}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side" id="side">
+<div class="brand">💬 محادثتي</div>
+<button class="new" id="newChat">＋ محادثة جديدة</button>
+<button id="clearChat">🗑️ مسح المحادثة</button>
+<button id="darkBtn">🌙 الوضع الليلي</button>
+<div class="stats">مدعوم بواسطة Gemini عبر Vercel</div>
+</aside>
+<main class="main">
+<header class="top"><button class="menu" id="menu">☰</button><h1>محادثتي</h1><span>✨</span></header>
+<section class="chat" id="chat">
+<div class="welcome" id="welcome"><h2>مرحبًا 👋</h2><p>اسألني أي شيء وسأحاول مساعدتك.</p><div class="quick">
+<button data-q="اشرح لي الذكاء الاصطناعي بطريقة بسيطة">🤖 الذكاء الاصطناعي</button>
+<button data-q="ساعدني في كتابة فكرة مشروع">💡 فكرة مشروع</button>
+<button data-q="ترجم هذه الجملة إلى الإنجليزية">🌍 ترجمة</button>
+</div></div>
+</section>
+<div class="typing" id="typing" hidden>جاري التفكير…</div>
+<div class="composer"><form class="form" id="form"><textarea class="input" id="input" placeholder="اكتب رسالتك…" rows="1"></textarea><button class="send" id="send">➤</button></form></div>
+</main>
+</div>
+<script src="/script.js"></script>
+</body>
+</html>
